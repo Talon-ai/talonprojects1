@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talon IT Solutions — Engineering & Development Portfolio</title>
+
+    <!-- SEO & Open Graph Metadata -->
+    <meta name="description" content="Official development portfolio and project archive of Talon IT Solutions, founded by Ntsako Maluleke. Explore custom web applications, digital infrastructure, and software engineering projects.">
+    <meta property="og:title" content="Talon IT Solutions — Project Archive & Development Gallery">
+    <meta property="og:description" content="Engineering a Smarter Digital Future. Browse our curated archive of software and web engineering deployments.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts & Tailwind CSS CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            ivory: '#F8F7F2',
+                            white: '#FFFFFF',
+                            stone: '#E8E5DE',
+                            grey: '#92938E',
+                            slate: '#46535C',
+                            taupe: '#B6AA98',
+                            silver: '#D8DADF',
+                            dark: '#1C2226'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Styling & Custom Scrollbars */
+        body {
+            background-color: #F8F7F2;
+            color: #1C2226;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background-color: #B6AA98;
+            color: #FFFFFF;
+        }
+
+        /* Glassmorphism Navigation & Cards */
+        .nav-backdrop {
+            background: rgba(248, 247, 242, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .glass-project-card {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(232, 229, 222, 0.9);
+            transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-project-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 24px 48px -16px rgba(28, 34, 38, 0.12);
+            border-color: #B6AA98;
+        }
+
+        .editorial-badge {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* Scroll-Triggered Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar Architecture */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F8F7F2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D8DADF;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B6AA98;
+        }
+
+        /* Hide scrollbars inside horizontal strip while maintaining scroll */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="relative">
+
+<!-- Subtle Ambient Background Gradients -->
+<div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+    <div class="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-brand-taupe/10 blur-3xl"></div>
+    <div class="absolute top-1/2 -left-40 w-[450px] h-[450px] rounded-full bg-brand-slate/5 blur-3xl"></div>
+</div>
+
+<!-- Sticky Minimalist Brand Header (Projects Only) -->
+<header class="fixed top-0 left-0 w-full z-[90] nav-backdrop border-b border-brand-stone/60 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <!-- Brand Logo & Identity -->
+        <a href="#top" class="flex items-center space-x-3 group">
+            <div class="w-10 h-10 bg-brand-dark text-brand-ivory rounded-xl flex items-center justify-center font-display font-bold text-xl shadow-md group-hover:bg-brand-taupe transition-colors duration-300">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+            </div>
+            <div class="flex flex-col">
+                <span class="font-display font-bold text-lg tracking-tight uppercase leading-none text-brand-dark">TALON IT</span>
+                <span class="text-[10px] font-semibold tracking-widest text-brand-slate uppercase mt-0.5">Development Archive</span>
+            </div>
+        </a>
+
+        <!-- Minimal Ecosystem Links -->
+        <div class="flex items-center space-x-3 sm:space-x-5">
+            <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full bg-brand-white border border-brand-stone text-[11px] font-mono font-semibold text-brand-slate">
+               Projects
+            </span>
+            <a href="index.html" class="px-4 py-2 rounded-xl bg-brand-white border border-brand-stone text-xs font-semibold text-brand-dark hover:border-brand-taupe transition-all">
+                Main Site
+            </a>
+            <a href="https://wa.me/27785969516?text=Hi%20Talon%20IT%20Solutions,%20I%20was%20browsing%20your%20Project%20Gallery%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-brand-dark text-brand-ivory text-xs font-semibold hover:bg-brand-slate transition-all shadow-sm">
+                Start a Project
+            </a>
+        </div>
+    </div>
+</header>
+
+<main id="top" class="pt-20">
+    <!-- PROJECTS GALLERY HEADER SECTION -->
+    <section class="py-16 sm:py-20 border-b border-brand-stone/60">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-3xl reveal">
+                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-white border border-brand-stone text-xs font-semibold text-brand-slate uppercase tracking-widest shadow-sm mb-5">
+                    <span class="w-2 h-2 rounded-full bg-brand-taupe"></span>
+                    <span>Talon IT Solutions • Engineering Portfolio</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-brand-dark leading-[1.08] tracking-tight">
+                    Selected Works & <span class="italic font-serif font-normal text-brand-slate">Digital Deployments.</span>
+                </h1>
+
+                <p class="text-brand-slate mt-5 text-base sm:text-lg leading-relaxed max-w-2xl">
+                    A dedicated visual showcase of software architecture, web platforms, and digital infrastructure engineered by <strong class="text-brand-dark font-semibold">Ntsako Maluleke</strong> and Talon IT Solutions. Click any project card to inspect up to 10 high-resolution views.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 30-SLOT PROJECT GALLERY GRID -->
+    <section class="py-16 sm:py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Section Meta Bar -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-12 reveal">
+                <div class="flex items-center space-x-3">10</span>
+                    <span class="h-4 w-px bg-brand-stone"></span>
+                    <span class="text-xs font-medium text-brand-slate">Click a project card to launch interactive 10-slide gallery</span>
+                </div>
+                <div class="text-xs font-mono text-brand-slate">
+                    STATUS: <span class="text-brand-dark font-semibold">READY FOR DEPLOYMENT</span>
+                </div>
+            </div>
+
+            <!-- Dynamic Grid Container for the 30 Project Placeholders -->
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Cards are cleanly rendered from the PROJECTS_DATA array below -->
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- MINIMAL BRAND FOOTER -->
+<footer class="bg-brand-dark text-brand-ivory py-12 border-t border-brand-slate">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-6 text-xs text-brand-silver">
+        <div class="flex items-center space-x-3">
+            <div class="w-7 h-7 bg-brand-ivory text-brand-dark rounded-lg flex items-center justify-center font-display font-bold text-xs">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            </div>
+            <span class="font-display font-bold tracking-wider uppercase text-brand-white">Talon IT Solutions — Project Gallery</span>
+        </div>
+        <div class="flex items-center space-x-6">
+            <a href="mailto:talonitsolutions@gmail.com" class="hover:text-brand-taupe transition-colors">talonitsolutions@gmail.com</a>
+            <a href="tel:0785969516" class="hover:text-brand-taupe transition-colors">078 596 9516</a>
+        </div>
+        <p class="text-brand-slate">© 2026 Talon IT Solutions. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- =========================================================================
+     INTERACTIVE 10-IMAGE PROJECT GALLERY LIGHTBOX MODAL
+     ========================================================================= -->
+<div id="project-modal" class="fixed inset-0 z-[150] hidden items-center justify-center p-4 sm:p-6 md:p-10" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div onclick="closeProjectModal()" class="fixed inset-0 bg-brand-dark/85 backdrop-blur-md transition-opacity"></div>
+
+    <!-- Modal Content Container -->
+    <div class="relative z-10 w-full max-w-6xl bg-brand-ivory rounded-3xl border border-brand-stone shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+        
+        <!-- Modal Top Header -->
+        <div class="px-6 py-4 bg-brand-white border-b border-brand-stone flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span id="modal-project-index" class="px-2.5 py-1 rounded-lg bg-brand-dark text-brand-ivory font-mono text-xs font-bold">01</span>
+                <div>
+                    <h2 id="modal-project-title" class="font-display font-bold text-lg sm:text-xl text-brand-dark leading-tight">Project Title</h2>
+                    <p id="modal-project-subtitle" class="text-[11px] font-mono text-brand-slate uppercase tracking-wider">Gallery Showcase • 10 Image Slots</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <span id="modal-slide-counter" class="hidden sm:inline-block font-mono text-xs font-bold text-brand-slate bg-brand-ivory px-3 py-1.5 rounded-lg border border-brand-stone">
+                    IMAGE 1 / 10
+                </span>
+                <button onclick="toggleZoom()" id="zoom-btn" class="p-2.5 rounded-xl bg-brand-ivory border border-brand-stone text-brand-dark hover:border-brand-taupe transition-colors" title="Toggle Image Zoom">
+                    <svg class="w-4 h-4 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                </button>
+                <button onclick="closeProjectModal()" class="p-2.5 rounded-xl bg-brand-dark text-brand-ivory hover:bg-brand-slate transition-colors" aria-label="Close Gallery">
+                    <svg class="w-4 h-4 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Stage (Active Image Display + Prev/Next Controls) -->
+        <div class="relative flex-grow bg-brand-dark/95 flex items-center justify-center overflow-hidden min-h-[320px] sm:min-h-[440px]">
+            
+            <!-- Previous Slide Button -->
+            <button onclick="changeSlide(-1)" class="absolute left-4 z-20 p-3 rounded-full bg-brand-white/15 hover:bg-brand-white/30 backdrop-blur-md text-brand-white border border-brand-white/20 transition-all focus:outline-none" aria-label="Previous Image">
+                <svg class="w-5 h-5 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+
+            <!-- Active Image / Placeholder Display Container -->
+            <div id="modal-stage-container" class="w-full h-full flex items-center justify-center p-6 sm:p-10 overflow-auto">
+                <!-- Populated dynamically via JS -->
+            </div>
+
+            <!-- Next Slide Button -->
+            <button onclick="changeSlide(1)" class="absolute right-4 z-20 p-3 rounded-full bg-brand-white/15 hover:bg-brand-white/30 backdrop-blur-md text-brand-white border border-brand-white/20 transition-all focus:outline-none" aria-label="Next Image">
+                <svg class="w-5 h-5 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+
+        <!-- Bottom Filmstrip Thumbnail Scroller (All 10 Image Slots) -->
+        <div class="bg-brand-white border-t border-brand-stone p-4">
+            <div class="flex items-center justify-between mb-2 px-1">
+                <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-brand-slate">Project Image Reel (10 Slots)</span>
+                <span class="text-[10px] font-mono text-brand-grey">Use ← → arrow keys or click thumbnails to scroll</span>
+            </div>
+            <div id="modal-thumbnails" class="flex items-center space-x-3 overflow-x-auto no-scrollbar py-1">
+                <!-- 10 Thumbnail slots rendered dynamically -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================================
+     EASY-TO-EDIT PROJECT DATA CONFIGURATION (30 PLACEHOLDERS READY)
+     =========================================================================
+     INSTRUCTIONS FOR ADDING YOUR PROJECTS:
+     1. Locate any project slot below (from id: 1 to id: 30).
+     2. Replace `title: "Project Title Placeholder [01]"` with your actual project name.
+     3. Replace `coverImage: ""` with your main card thumbnail image path (e.g., "images/project1-cover.jpg").
+     4. Add up to 10 screenshot image paths inside the `images: [ ... ]` array (e.g., "images/p1-1.jpg", "images/p1-2.jpg", etc.).
+     5. Any slot left as `""` will automatically render a sleek Talon IT Solutions glassmorphic placeholder!
+     ========================================================================= -->
+<script>
+    const PROJECTS_DATA = [
+        // --- PROJECT 01 ---
+        {
+            id: 1,
+            title: "Save A Lot",
+            category: "E-Commerce Platform",
+            coverImage: "2.png",
+            images: [
+                "3.png", // Image 01
+                "4.png", // Image 02
+                "5.png", // Image 03
+                
+            ]
+        },
+        // --- PROJECT 02 ---
+        {
+            id: 2,
+            title: "CaledonCode Contact Design",
+            category: "Web Application",
+            coverImage: ".png",
+            images: [
+                "6.png", // Image 01
+            ]
+        },
+
+        // --- PROJECT 03 ---
+        {
+            id: 3,
+            title: "Chiro Active Bookings Website",
+            category: "Custom Infrastructure",
+            coverImage: "7.png",
+            images: [
+                "7.png", // Image 01
+                "8.png", // Image 02
+                "9.png", // Image 03
+                "10.png", // Image 04
+            ]
+        },
+        // --- PROJECT 04 ---
+        {
+            id: 4,
+            title: "Dank Connections Premium Storefront",
+            category: "E-Commerce Platform",
+            coverImage: "11.png",
+            images: [
+                "11.png", // Image 01
+                "12.png", // Image 02
+                "13.png", // Image 03
+                "14.png", // Image 04
+                "15.png", // Image 05
+            ]
+        },
+        // --- PROJECT 05 ---
+        {
+            id: 5,
+            title: "Linkdin Detail Scraper",
+            category: "Web Application",
+            coverImage: "16.png",
+            images: [
+                "16.png", // Image 01
+            ]
+        },
+                // --- PROJECT 06 ---
+        {
+            id: 6,
+            title: "HBK Maintenance",
+            category: "Custom Infrastructure",
+            coverImage: "17.png",
+            images: [
+                "18.png", // Image 01
+                "19.png", // Image 02
+                "20.png", // Image 03
+                "21.png", // Image 04
+            ]
+        },
+        // --- PROJECT 07 ---
+        {
+            id: 7,
+            title: "Hush Pretoria Digital Storefront",
+            category: "Custom Infrastructure",
+            coverImage: "22.png",
+            images: [
+                "23.png", // Image 01
+                "24.png", // Image 02
+            ]
+        },
+        // --- PROJECT 08 ---
+        {
+            id: 8,
+            title: "Tasty 420 Treez",
+            category: "E-Commerce Platform",
+            coverImage: "images/25.png",
+            images: [
+                "26.png", // Image 01
+                "27.png", // Image 02
+                "28.png", // Image 03
+                "29.png", // Image 04
+            ]
+        },
+        // --- PROJECT 09 ---
+        {
+            id: 9,
+            title: "Zaza Canna Curators",
+            category: "E-Commerce Platform",
+            coverImage: "30.png",
+            images: [
+                "31.png", // Image 01
+                "32.png", // Image 02
+                "33.png", // Image 03
+            ]
+        },
+    ];
+
+    // =========================================================================
+    // GALLERY RENDERING & INTERACTIVE LIGHTBOX ENGINE
+    // =========================================================================
+    let activeProjectIndex = 0;
+    let activeSlideIndex = 0;
+    let isZoomed = false;
+
+    const gridEl = document.getElementById('projects-grid');
+    const modalEl = document.getElementById('project-modal');
+    const modalIndexEl = document.getElementById('modal-project-index');
+    const modalTitleEl = document.getElementById('modal-project-title');
+    const modalSubtitleEl = document.getElementById('modal-project-subtitle');
+    const modalCounterEl = document.getElementById('modal-slide-counter');
+    const modalStageEl = document.getElementById('modal-stage-container');
+    const modalThumbsEl = document.getElementById('modal-thumbnails');
+
+    // Pad numbers (e.g., 1 -> "01")
+    function padNum(num) {
+        return num.toString().padStart(2, '0');
+    }
+
+    // Render all 30 Project Cards into the Grid
+    function renderProjectGrid() {
+        gridEl.innerHTML = PROJECTS_DATA.map((project, idx) => {
+            const formattedNum = padNum(project.id);
+            const hasCover = project.coverImage && project.coverImage.trim() !== "";
+            const loadedImagesCount = project.images.filter(img => img && img.trim() !== "").length;
+
+            return `
+                <article onclick="openProjectModal(${idx})" class="glass-project-card rounded-3xl overflow-hidden cursor-pointer flex flex-col justify-between reveal group">
+                    <!-- Top Project Header Bar (Above Website Picture) -->
+                    <div class="px-6 pt-5 pb-3 flex items-center justify-between">
+                        <span class="font-mono text-xs font-bold text-brand-taupe tracking-widest">PROJECT // ${formattedNum}</span>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-ivory border border-brand-stone text-[10px] font-mono font-semibold text-brand-slate group-hover:border-brand-taupe transition-colors">
+                            <span>${loadedImagesCount > 0 ? loadedImagesCount + ' / 10 VIEWS' : '10 GALLERY SLOTS'}</span>
+                        </span>
+                    </div>
+
+                    <!-- Primary Featured Website Thumbnail Container -->
+                    <div class="px-5">
+                        <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-brand-stone/80 bg-gradient-to-br from-brand-ivory via-brand-white to-brand-stone/60 flex items-center justify-center">
+                            ${hasCover ? `
+                                <img src="${project.coverImage}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="hidden w-full h-full flex-col items-center justify-center p-6 text-center">
+                                    <span class="font-mono text-xs text-brand-slate">Image not found: ${project.coverImage}</span>
+                                </div>
+                            ` : `
+                                <!-- Glassmorphic Empty Website Preview Placeholder -->
+                                <div class="w-full h-full p-4 flex flex-col justify-between relative">
+                                    <div class="absolute -right-6 -bottom-6 w-28 h-28 bg-brand-taupe/15 rounded-full blur-xl group-hover:scale-125 transition-transform duration-500"></div>
+                                    
+                                    <!-- Browser Window Top Dots -->
+                                    <div class="flex items-center justify-between border-b border-brand-stone/60 pb-2">
+                                        <div class="flex items-center space-x-1.5">
+                                            <span class="w-2 h-2 rounded-full bg-brand-stone"></span>
+                                            <span class="w-2 h-2 rounded-full bg-brand-stone"></span>
+                                            <span class="w-2 h-2 rounded-full bg-brand-stone"></span>
+                                        </div>
+                                        <span class="font-mono text-[9px] text-brand-grey uppercase">PREVIEW SLOT ${formattedNum}</span>
+                                    </div>
+
+                                    <!-- Center Wireframe Emblem -->
+                                    <div class="my-auto flex flex-col items-center justify-center text-center">
+                                        <div class="w-11 h-11 rounded-2xl bg-brand-white/90 border border-brand-stone shadow-sm flex items-center justify-center text-brand-slate group-hover:bg-brand-dark group-hover:text-brand-ivory transition-colors duration-300 mb-2">
+                                            <svg class="w-5 h-5 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.8">
+                                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                                <polyline points="21 15 16 10 5 21"/>
+                                            </svg>
+                                        </div>
+                                        <span class="font-display font-semibold text-xs text-brand-dark">Main Website Screenshot</span>
+                                        <span class="text-[10px] font-mono text-brand-grey mt-0.5">Click to inspect 10 project slides</span>
+                                    </div>
+
+                                    <!-- Bottom Subtle Bar -->
+                                    <div class="flex justify-between items-center text-[9px] font-mono text-brand-grey pt-1">
+                                        <span>TALON IT ARCHIVE</span>
+                                        <span class="group-hover:text-brand-dark transition-colors">EXPAND →</span>
+                                    </div>
+                                </div>
+                            `}
+                        </div>
+                    </div>
+
+                    <!-- Project Title Banner Underneath Website Picture -->
+                    <div class="px-6 pt-4 pb-6 flex items-center justify-between gap-4">
+                        <div>
+                            <h3 class="font-display font-bold text-lg text-brand-dark group-hover:text-brand-slate transition-colors leading-snug">
+                                ${project.title}
+                            </h3>
+                            <span class="text-[11px] font-medium text-brand-grey">${project.category}</span>
+                        </div>
+                        <div class="w-9 h-9 rounded-full bg-brand-ivory border border-brand-stone flex items-center justify-center text-brand-dark group-hover:bg-brand-dark group-hover:text-brand-ivory transition-all shrink-0">
+                            <svg class="w-4 h-4 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }).join('');
+    }
+
+    // Open Modal for Specific Project
+    function openProjectModal(projectIdx) {
+        activeProjectIndex = projectIdx;
+        activeSlideIndex = 0;
+        isZoomed = false;
+
+        const project = PROJECTS_DATA[activeProjectIndex];
+        modalIndexEl.innerText = padNum(project.id);
+        modalTitleEl.innerText = project.title;
+        modalSubtitleEl.innerText = `${project.category} • Interactive 10-Slide Gallery`;
+
+        modalEl.classList.remove('hidden');
+        modalEl.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+
+        renderModalStage();
+        renderModalThumbnails();
+    }
+
+    // Close Modal
+    function closeProjectModal() {
+        modalEl.classList.add('hidden');
+        modalEl.classList.remove('flex');
+        document.body.style.overflow = '';
+        isZoomed = false;
+    }
+
+    // Navigate Slides (-1 or +1)
+    function changeSlide(direction) {
+        activeSlideIndex = (activeSlideIndex + direction + 10) % 10;
+        isZoomed = false;
+        renderModalStage();
+        renderModalThumbnails();
+    }
+
+    // Jump to Specific Slide (0 to 9)
+    function selectSlide(slideIdx) {
+        activeSlideIndex = slideIdx;
+        isZoomed = false;
+        renderModalStage();
+        renderModalThumbnails();
+    }
+
+    // Toggle Lightbox Zoom
+    function toggleZoom() {
+        isZoomed = !isZoomed;
+        renderModalStage();
+    }
+
+    // Render Main Stage Image or Empty Placeholder Slot
+    function renderModalStage() {
+        const project = PROJECTS_DATA[activeProjectIndex];
+        const imgSrc = project.images[activeSlideIndex];
+        const slideNum = padNum(activeSlideIndex + 1);
+
+        modalCounterEl.innerText = `IMAGE ${activeSlideIndex + 1} / 10`;
+
+        if (imgSrc && imgSrc.trim() !== "") {
+            modalStageEl.innerHTML = `
+                <img src="${imgSrc}" alt="${project.title} — View ${slideNum}" 
+                     onclick="toggleZoom()"
+                     class="${isZoomed ? 'max-w-none scale-125 cursor-zoom-out' : 'max-h-[62vh] max-w-full object-contain cursor-zoom-in'} rounded-2xl shadow-2xl border border-brand-white/15 transition-all duration-300">
+            `;
+        } else {
+            modalStageEl.innerHTML = `
+                <div class="w-full max-w-2xl aspect-[16/10] rounded-2xl bg-brand-white/5 border border-brand-white/15 backdrop-blur-md p-8 flex flex-col items-center justify-center text-center text-brand-ivory">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-white/10 border border-brand-white/15 flex items-center justify-center text-brand-taupe mb-4">
+                        <svg class="w-8 h-8 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                    </div>
+                    <span class="font-mono text-xs text-brand-taupe uppercase tracking-widest mb-1">Project ${padNum(project.id)} • Image Slot ${slideNum} of 10</span>
+                    <h4 class="font-display font-bold text-xl text-brand-white mb-2">${project.title}</h4>
+                    <p class="text-xs text-brand-silver max-w-md leading-relaxed">
+                        Empty image slot ready for upload. Add your screenshot file path to <code class="px-1.5 py-0.5 rounded bg-brand-white/10 text-brand-taupe">images[${activeSlideIndex}]</code> inside <code class="px-1.5 py-0.5 rounded bg-brand-white/10 text-brand-taupe">PROJECTS_DATA</code>.
+                    </p>
+                </div>
+            `;
+        }
+    }
+
+    // Render Bottom 10-Slot Filmstrip
+    function renderModalThumbnails() {
+        const project = PROJECTS_DATA[activeProjectIndex];
+
+        modalThumbsEl.innerHTML = project.images.map((imgSrc, idx) => {
+            const isActive = idx === activeSlideIndex;
+            const slideNum = padNum(idx + 1);
+            const hasImg = imgSrc && imgSrc.trim() !== "";
+
+            return `
+                <button onclick="selectSlide(${idx})" 
+                        class="relative shrink-0 w-24 h-16 rounded-xl overflow-hidden border-2 transition-all focus:outline-none ${isActive ? 'border-brand-taupe ring-2 ring-brand-taupe/30 scale-105' : 'border-brand-stone opacity-65 hover:opacity-100'}">
+                    ${hasImg ? `
+                        <img src="${imgSrc}" alt="Slide ${slideNum}" class="w-full h-full object-cover">
+                    ` : `
+                        <div class="w-full h-full bg-brand-ivory flex flex-col items-center justify-center text-brand-slate">
+                            <span class="font-mono text-[10px] font-bold">${slideNum}</span>
+                            <span class="text-[8px] font-mono uppercase text-brand-grey">Empty</span>
+                        </div>
+                    `}
+                    <span class="absolute bottom-1 right-1 px-1 rounded bg-brand-dark/75 text-brand-white font-mono text-[9px]">${slideNum}</span>
+                </button>
+            `;
+        }).join('');
+
+        // Scroll active thumbnail smoothly into view
+        const activeThumb = modalThumbsEl.children[activeSlideIndex];
+        if (activeThumb) {
+            activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+    }
+
+    // Keyboard Accessibility (Esc to close, Left/Right arrows to navigate slides)
+    document.addEventListener('keydown', (e) => {
+        if (modalEl.classList.contains('hidden')) return;
+        if (e.key === 'Escape') closeProjectModal();
+        if (e.key === 'ArrowRight') changeSlide(1);
+        if (e.key === 'ArrowLeft') changeSlide(-1);
+    });
+
+    // Intersection Observer for Smooth Scroll Reveal Animations
+    function setupIntersectionObserver() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.08,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    // Initialize Page
+    document.addEventListener('DOMContentLoaded', () => {
+        renderProjectGrid();
+        setupIntersectionObserver();
+    });
+</script>
+
+</body>
+</html>
